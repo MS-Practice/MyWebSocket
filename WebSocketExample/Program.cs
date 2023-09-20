@@ -1,5 +1,7 @@
+using WebSocketExample.Infrastructures;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -12,7 +14,9 @@ app.UseWebSockets(webSocketOptions);
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.MapControllers();
+//app.MapControllers();
+
+app.UseMyWebSocketServer(new MyWebSocketOption { Endpoint = "/ws" });
 
 //app.MapGet("/", () => "Hello World!");
 
